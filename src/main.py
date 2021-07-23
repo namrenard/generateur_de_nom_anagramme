@@ -17,7 +17,7 @@ from random import shuffle
 
 '''class AnagramApp(MDApp):
     def build(self):
-        screen = Screen()
+        screen = MDScreen()
         screen.add_widget(
             MDRectangleFlatButton(
                 text="Hello, World",
@@ -39,24 +39,35 @@ class Word:
         shuffle(a)
         return "".join(a)
 
-    def relance_anagramme(self):
-        again = input('Voulez-vous relancer la recherche ? O/N')
-        if again.upper() == "O":
-            self.anagramme()
-        else:
-            
+
+
+
+
+#---------------------------program-----------------------------
+# if __name__ == '__main__':
+#       AnagramApp().run()
+
+print("Bonjour, ceci est un petit programme pour trouver un anagramme aléatoirement.")
+print()
+mot = ''
+while mot == '':
+    mot = input("Veuillez donner un mot :")
+try:
+    mot = int(mot)
+    print("Erreur, veuillez mettre un mot et non un nombre.")
+
+except:
+    mot_str = Word(mot)
+    print(mot_str.anagramme())
+    question = input("Relancez le générateur avec le même mot ? o/n")
+    if question.lower() == "o":
+        print(mot_str.anagramme())
+    elif question.lower() == "n":
+        exit()
+    else:
+        print("Vous n'avez pas donné de réponse. Programme terminé")
 
 
 
 
 
-
-# ----------programme------------#
-# AnagramApp().run()
-
-input("Bonjour, ceci est un petit programme pour trouver un anagramme aléatoirement."
-      "Veuillez tapper sur 'ENTRER' pour démarrer.")
-mot = input("Veuillez donner un mot :")
-mot_str = Word(str(mot))
-print(mot_str.anagramme())
-mot_str.relance_anagramme()
