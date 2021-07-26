@@ -1,7 +1,7 @@
 '''
-1) trouver l'anagramme d'un mot
-2) verifier que c'est un mot et non des chiffres
-3) fonction pour relancer avec le même mot ou choisir un nouveau
+1) trouver l'anagramme d'un  = ok
+2) verifier que c'est un mot et non des chiffres = bug
+3) fonction pour relancer avec le même mot ou choisir un nouveau = ok
 3.1) fonction pour un shuffle de 5, 10 ou 20 mots ?
 4) interface gui : kivi md pour mobile
 4.1) faire un input pour le mot, un bouton pour le shuffle x1, shuffle x 5 et shuffle x 10
@@ -39,9 +39,24 @@ class Word:
         shuffle(a)
         return "".join(a)
 
+    def relance_anagramme(self):
+        question = input("Relancez le générateur avec le même mot ? o/n")
+        if question.lower() == "o":
+            print(mot_str.anagramme())
+        elif question.lower() == "n":
+            print("Ok. Programme Terminé")
+            exit()
+        else:
+            print("Vous n'avez pas donné de réponse. Programme Terminé")
 
-
-
+    def verification_anagramme(self):
+        isinstance(self, int)
+        while True:
+           print("Erreur, veuillez mettre un mot et non un nombre.")
+           input("Quel est votre mot ? :")
+           self.verification_anagramme()
+        else:
+           exit()
 
 #---------------------------program-----------------------------
 # if __name__ == '__main__':
@@ -52,20 +67,12 @@ print()
 mot = ''
 while mot == '':
     mot = input("Veuillez donner un mot :")
-try:
-    mot = int(mot)
-    print("Erreur, veuillez mettre un mot et non un nombre.")
 
-except:
-    mot_str = Word(mot)
-    print(mot_str.anagramme())
-    question = input("Relancez le générateur avec le même mot ? o/n")
-    if question.lower() == "o":
-        print(mot_str.anagramme())
-    elif question.lower() == "n":
-        exit()
-    else:
-        print("Vous n'avez pas donné de réponse. Programme terminé")
+mot_str = Word(mot)
+#mot_str.verification_anagramme()
+print(mot_str.anagramme())
+mot_str.relance_anagramme()
+
 
 
 
