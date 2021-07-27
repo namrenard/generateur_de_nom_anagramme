@@ -39,10 +39,26 @@ class Word:
         shuffle(a)
         return "".join(a)
 
+
+    def anagramme_multiple(self):
+        nombre_de_recherche = ''
+        y = 0
+        while nombre_de_recherche == '' or nombre_de_recherche.isdigit() == False:
+            nombre_de_recherche = input("Choisissez le nombre de recherche que vous souhaitez ?:")
+
+        nombre_de_recherche_int = int(nombre_de_recherche)
+        print(f"Vous recherchez {nombre_de_recherche} anagrammes de ({self.word})----")
+        while y <= nombre_de_recherche_int:
+            self.anagramme()
+            print("".join(self.anagramme()))
+            y = +1
+        else:
+            exit()
+
     def relance_anagramme(self):
         question = input("Relancez le générateur avec le même mot ? o/n")
         if question.lower() == "o":
-            print(mot_str.anagramme())
+            print(self.anagramme_multiple())
         elif question.lower() == "n":
             print("Ok. Programme Terminé")
             exit()
@@ -73,8 +89,9 @@ while mot == '':
 
 mot_str = Word(mot)
 mot_str.verification_anagramme()
-print(mot_str.anagramme())
-mot_str.relance_anagramme()
+mot_str.anagramme_multiple()
+# print(mot_str.anagramme())
+# mot_str.relance_anagramme()
 
 
 
