@@ -1,11 +1,14 @@
 '''
-1) trouver l'anagramme d'un  = ok
-2) verifier que c'est un mot et non des chiffres = bug
+1) trouver l'anagramme d'un mot  = ok
+2) verifier que c'est un mot et non des chiffres = bug car si les deux mixer programme continue.
 3) fonction pour relancer avec le même mot ou choisir un nouveau = ok
-3.1) fonction pour un shuffle de 5, 10 ou 20 mots ?
+3.1) fonction pour un shuffle de x fois le mot  = ok
 4) interface gui : kivi md pour mobile
-4.1) faire un input pour le mot, un bouton pour le shuffle x1, shuffle x 5 et shuffle x 10
-4.2) bandeau
+4.1) faire un input ou text pour le mot, un bouton pour le shuffle et un bouton pour le nombre de recherche
+4.2) mettre un logo du jeu.
+4.3) mettre de la couleur en bandeau et arrière plan de l'appli.
+4.4) bouton pour relancer le programme en effacant les données
+5) compiler sous apk
 '''
 
 from random import shuffle
@@ -34,13 +37,15 @@ class Word:
     def __init__(self, word):
         self.word = word
 
+    #function shuffle for a word
     def anagramme(self):
         a = list(self.word)
         shuffle(a)
         return "".join(a)
 
-
+    # choice of shuffle
     def anagramme_multiple(self):
+
         nombre_de_recherche = ''
         y = 1
         while nombre_de_recherche == '' or nombre_de_recherche.isdigit() == False:
@@ -49,29 +54,34 @@ class Word:
         nombre_de_recherche_int = int(nombre_de_recherche)
         print(f"Vous recherchez {nombre_de_recherche} anagrammes de ({self.word})----")
         while y <= nombre_de_recherche_int:
-
             print("".join(self.anagramme()))
             y = y+1
-        else:
-            exit()
+        self.relance_anagramme()
 
-    def relance_anagramme(self):
+    # again a shuffle of shutdown the program?
+    def relance_anagramme(self, ):
         question = input("Relancez le générateur avec le même mot ? o/n")
+        self.stop = stop
         if question.lower() == "o":
-            print(self.anagramme_multiple())
+            self.anagramme_multiple()
+
+
         elif question.lower() == "n":
             print("Ok. Programme Terminé")
-            exit()
+
         else:
             print("Vous n'avez pas donné de réponse valide. Programme Terminé")
-            self.relance_anagramme()
+            self.relance_anagramme(False)
+        if self.stop == True:
+            exit()
 
+    # check if it's a word or number // miss to block the mixture of word+number
     def verification_anagramme(self):
 
-        if self.word.isdigit() == True:
-           print(f"Erreur, {self.word} n'est pas un mot, recommencez s'il vous plait.")
-           self.word = input("Quel est votre mot ? :")
-           self.verification_anagramme()
+        if self.word.isdigit():
+            print(f"Erreur, {self.word} n'est pas un mot, recommencez s'il vous plait.")
+            self.word = input("Quel est votre mot ? :")
+            self.verification_anagramme()
         else:
             return
 
@@ -90,11 +100,4 @@ while mot == '':
 mot_str = Word(mot)
 mot_str.verification_anagramme()
 mot_str.anagramme_multiple()
-# print(mot_str.anagramme())
 # mot_str.relance_anagramme()
-
-
-
-
-
-
