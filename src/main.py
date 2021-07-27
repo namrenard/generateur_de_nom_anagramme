@@ -20,7 +20,7 @@ from random import shuffle
         screen = MDScreen()
         screen.add_widget(
             MDRectangleFlatButton(
-                text="Hello, World",
+                text="Click here to Shuffle",
                 pos_hint={"center_x": 0.5, "center_y": 0.5},
             )
         )
@@ -42,16 +42,16 @@ class Word:
 
     def anagramme_multiple(self):
         nombre_de_recherche = ''
-        y = 0
+        y = 1
         while nombre_de_recherche == '' or nombre_de_recherche.isdigit() == False:
             nombre_de_recherche = input("Choisissez le nombre de recherche que vous souhaitez ?:")
 
         nombre_de_recherche_int = int(nombre_de_recherche)
         print(f"Vous recherchez {nombre_de_recherche} anagrammes de ({self.word})----")
         while y <= nombre_de_recherche_int:
-            self.anagramme()
+
             print("".join(self.anagramme()))
-            y = +1
+            y = y+1
         else:
             exit()
 
