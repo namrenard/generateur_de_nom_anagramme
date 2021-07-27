@@ -47,16 +47,19 @@ class Word:
             print("Ok. Programme Terminé")
             exit()
         else:
-            print("Vous n'avez pas donné de réponse. Programme Terminé")
+            print("Vous n'avez pas donné de réponse valide. Programme Terminé")
+            self.relance_anagramme()
 
     def verification_anagramme(self):
-        isinstance(self, int)
-        while True:
-           print("Erreur, veuillez mettre un mot et non un nombre.")
-           input("Quel est votre mot ? :")
+
+        if self.word.isdigit() == True:
+           print(f"Erreur, {self.word} n'est pas un mot, recommencez s'il vous plait.")
+           self.word = input("Quel est votre mot ? :")
            self.verification_anagramme()
         else:
-           exit()
+            return
+
+
 
 #---------------------------program-----------------------------
 # if __name__ == '__main__':
@@ -69,7 +72,7 @@ while mot == '':
     mot = input("Veuillez donner un mot :")
 
 mot_str = Word(mot)
-#mot_str.verification_anagramme()
+mot_str.verification_anagramme()
 print(mot_str.anagramme())
 mot_str.relance_anagramme()
 
