@@ -12,23 +12,7 @@
 '''
 
 from random import shuffle
-from kivy.uix.screenmanager import Screen
-from kivymd.app import MDApp
-from kivymd.uix.button import MDRectangleFlatButton
-
-# GUI kivi MD
-
-class AnagramApp(MDApp):
-    def build(self):
-        screen = Screen()
-        screen.add_widget(
-            MDRectangleFlatButton(
-                text="Click here to Shuffle",
-                pos_hint={"center_x": 0.5, "center_y": 0.5},
-            )
-        )
-        return screen
-
+import gui
 
 
 # definition class word_programme
@@ -75,7 +59,8 @@ class Word:
             self.relance_anagramme()
 
 
-    # check if it's a word or number // miss to block the mixture of word+number
+    # check if it's a word or number
+    # [Bug] miss to block the mixture of word+number
     def verification_anagramme(self):
 
         if self.word.isdigit():
@@ -89,7 +74,7 @@ class Word:
 
 #---------------------------program-----------------------------
 if __name__ == '__main__':
-       AnagramApp().run()
+       gui.AnagramApp().run()
 
 '''print("Bonjour, ceci est un petit programme pour trouver un anagramme aléatoirement.")
 print()
