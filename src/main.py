@@ -12,33 +12,29 @@
 '''
 
 from random import shuffle
-# from kivy.uix.screenmanager import Screen
-# from kivymd.app import MDApp
-# from kivymd.uix.button import MDRectangleFlatButton
+import re
 
 # GUI kivi MD
 
 '''class AnagramApp(MDApp):
     def build(self):
-        screen = MDScreen()
+        screen = Screen()
         screen.add_widget(
             MDRectangleFlatButton(
                 text="Click here to Shuffle",
                 pos_hint={"center_x": 0.5, "center_y": 0.5},
             )
         )
-        return screen
-'''
+        return screen'''
 
 
-# definition class word_programme
+
 
 class Word:
 
     def __init__(self, word, token=0):
         self.word = word
         self.token = token
-
 
     # function shuffle for a word
     def anagramme(self):
@@ -47,7 +43,7 @@ class Word:
         return "".join(a)
 
     # choice of shuffle
-    def anagramme_multiple(self,token):
+    def anagramme_multiple(self, token):
         nombre_de_recherche = ''
         y = 1
         while nombre_de_recherche == '' or nombre_de_recherche.isdigit() == False:
@@ -63,13 +59,13 @@ class Word:
         else:
             exit()
 
-    # again a shuffle of shutdown the program?
+    # again a shuffle or shutdown the program?
     def relance_anagramme(self):
         question = input("Relancez le générateur avec le même mot ? o/n")
         if question.lower() == "o":
             self.anagramme_multiple(1)
         elif question.lower() == "n":
-             print("Ok. Programme Terminé")
+            print("Ok. Programme Terminé")
         else:
             print("Vous n'avez pas donné de réponse valide. Programme Terminé")
             self.relance_anagramme()
@@ -77,20 +73,19 @@ class Word:
 
     # check if it's a word or number // miss to block the mixture of word+number
     def verification_anagramme(self):
-
-        if self.word.isdigit():
-            print(f"Erreur, {self.word} n'est pas un mot, recommencez s'il vous plait.")
+        m = self.word
+        bool(re.search(r'\d', m))
+        if True:
+            print(f"Erreur, vous n'avez pas inscrit un mot, recommencez s'il vous plait.")
             self.word = input("Quel est votre mot ? :")
             self.verification_anagramme()
         else:
             return
 
 
-
-#---------------------------program-----------------------------
-# if __name__ == '__main__':
-#       AnagramApp().run()
-
+# ---------------------------program-----------------------------
+'''if __name__ == '__main__':
+    AnagramApp().run()'''
 print("Bonjour, ceci est un petit programme pour trouver un anagramme aléatoirement.")
 print()
 mot = ''
