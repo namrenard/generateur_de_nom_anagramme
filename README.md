@@ -14,13 +14,11 @@ Different version avalaible : terminal, mobile app
 Releases --
 
 
-V1 : gui interface with KiviMD generated.
+V1 : gui interface with Kivi generated.
 
-Current : V0.4 - fixed bug in reloading the program a second time, merge reloading program inside multiple function
-V0.3 : add reloading function
+current : V0.4.1 : fixed bug in checking the word by user. use regex to solve it.
+V0.4 - fixed bug in reloading the program a second time, merge reloading program inside multiple function
+V0.3 : add reloading function.
 V0.2 : add function to check str or int.
 V0.1 : add multiple shuffle function
-V0 : One file - program start 
-mode : terminal / no GUI interface
-
-
+V0 : mode : terminal
